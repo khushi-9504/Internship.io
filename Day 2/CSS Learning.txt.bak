@@ -1,0 +1,98 @@
+3 types of CSS:  Inline CSS, Internal CSS, External CSS 
+
+<p style="color:red;"></p>
+
+<head>
+	<style>
+		h1{
+			color:red;
+		}
+	</style>
+</head>
+
+<link rel="stylesheet" href="css_file_name"/>
+
+Priority: Inline>Internal>External but Code Efficient Priority External. 
+
+!important
+
+Selectors: element, id, class, universal, group
+
+Font Property: 
+	font-family: web safe fonts (pre installed with OS), web fonts
+	font-variant: normal, initial, small-caps, inherit
+	color: 
+	font-size:
+	line-height: Space betweeen the fonts
+	font-weight: bold, bolder, 100-900
+	font-style: italic, normal, oblique, initial, inherit, unset
+	letter-spacing: Controls the spacing between characters
+	word-spacing: Controls the spacing betweeen words
+	text-transform: Controls text casing, possible values: none, capitalize, uppercase, lowercase
+	
+Color Property:
+	color: red (color by name)
+	color: rgb(0,0,0) - color by RGB function
+	color: #hex value - color by hex value
+	hsl, hwb
+
+Border Property:
+	border-color:
+	border-style: none, dotted, dashed, solid, double, groove, hidden, ridge, inset, outset
+	border-width:
+	border-radius:
+	border-top | right | bottom | left: 2 px solid red;
+	border-top-left-radius: 2px
+	border: 2px solid green 
+
+Background Property: 
+	background-color: 
+	background-image: url('path');
+	background-position: top bottom (first for x and second for y)
+	background-repeat: no-repeat,repeat-x, repeat-y, space,round(no space)
+	background-attachment (Sets whether a background image scrolls with the rest of page or fixed): scroll, fixed, local (scroll with element content) 
+	background-size (specifies the size of background image) : auto | length | % | Cover (Resize the image to cover the element either it needs to stretch or cut the image) | Contain (Resize the background image to make sure image is fully visible)
+	background-origin (Specifies origin position - background positioning area of image): padding-box | border-box | content-box
+
+CSS Box Model: 
+	Margin, Border, Padding, Element / Content
+	
+	Box-sizing : Defines how total width and height of an element is calculated. 
+				 Values: 
+					content-box (default) : Width and height include only content, padding and border are added outside size which increases the total width
+					border-box: Width and height include content, padding and border. Actual size of element doesn't increases
+					unset: removes the box sizing
+	
+	margin / padding : top right bottom left;
+	margin / padding : top left-right bottom;
+	margin / padding : top-bottom left-right;
+	maring / padding : single value for all sides;
+	
+Float and clear property: 
+
+	Float: Used for positioning and formatting content / images either on left or right sides. Possible values : left, right and none
+	Clear: Controls the behavior of elementsin relation to floated elements. Specifies whether an element should be placed next or below the floated element. Possible values: left, right, both, none 
+	
+Styling Links & Buttons: 
+
+	Psuedo classes : hover, active, visited, disabled
+	
+	a:link     { color: blue; }     /* Unvisited link */
+	a:visited  { color: purple; }   /* Visited link */
+	a:hover    { color: red; }      /* Mouse over link */
+	a:active   { color: green; }    /* Link being clicked */
+	
+	cursor: none | pointer | text | default | not-allowed | move | wait | help | crosshair | grab | grabbing | none 
+
+	Text Properties: 
+	
+	text-align: left | right | center | justify
+	text-align-last (last line alignment) : left | right;
+	text-indent: Space before the first line of paragraph
+	text-transform: uppercase, lowercase, capitalize;
+	letter-spacing:
+	word-spacing:
+	line-height:
+	text-wrap: wrap | nowrap | pretty | balance | stable | auto
+	text-shadow: h-shadow v-shadow blur radius-color
+	text-decoration: underline, overline, line-through
