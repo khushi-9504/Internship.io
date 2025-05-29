@@ -1,0 +1,33 @@
+Styling Links & Buttons: 
+
+	Psuedo classes : hover, active, visited, disabled
+	
+	a:link     { color: blue; }     /* Unvisited link */
+	a:visited  { color: purple; }   /* Visited link */
+	a:hover    { color: red; }      /* Mouse over link */
+	a:active   { color: green; }    /* Link being clicked */
+	
+	cursor: none | pointer | text | default | not-allowed | move | wait | help | crosshair | grab | grabbing | none 
+
+	Text Properties: 
+	
+	text-align: left | right | center | justify
+	text-align-last (last line alignment) : left | right;
+	text-indent: Space before the first line of paragraph
+	text-transform: uppercase, lowercase, capitalize;
+	letter-spacing:
+	word-spacing:
+	line-height:
+	text-wrap: wrap | nowrap | pretty | balance | stable | auto
+	text-shadow: h-shadow v-shadow blur radius-color
+	text-decoration: underline, overline, line-through
+
+Display Property: 
+	display: block, inline, inline-block, none, flex, grid
+
+Position Property: Specifies how to element should be positioned into a document and uses top - bottom - left - right properties
+	By default its static. Other values are absolute, relative, fixed, sticky
+	Relative(stays in normal flow, and relative to current position)
+	Absolute(Removes from normal flow and relative to ancestor element)
+	fixed(Removes from normal flow and Relative to viewport)
+	sticky(Stays in normal flow, relative to scroll container)
