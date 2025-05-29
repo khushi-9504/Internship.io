@@ -1,15 +1,4 @@
-Styling Links & Buttons: 
-
-	Psuedo classes : hover, active, visited, disabled
-	
-	a:link     { color: blue; }     /* Unvisited link */
-	a:visited  { color: purple; }   /* Visited link */
-	a:hover    { color: red; }      /* Mouse over link */
-	a:active   { color: green; }    /* Link being clicked */
-	
-	cursor: none | pointer | text | default | not-allowed | move | wait | help | crosshair | grab | grabbing | none 
-
-	Text Properties: 
+Text Properties: 
 	
 	text-align: left | right | center | justify
 	text-align-last (last line alignment) : left | right;
@@ -22,6 +11,48 @@ Styling Links & Buttons:
 	text-shadow: h-shadow v-shadow blur radius-color
 	text-decoration: underline, overline, line-through
 
+Background Property: 
+	background-color: 
+	background-image: url('path');
+	background-position: top bottom (first for x and second for y)
+	background-repeat: no-repeat,repeat-x, repeat-y, space,round(no space)
+	background-attachment (Sets whether a background image scrolls with the rest of page or fixed): scroll, fixed, local (scroll with element content) 
+	background-size (specifies the size of background image) : auto | length | % | Cover (Resize the image to cover the element either it needs to stretch or cut the image) | Contain 	(Resize the background image to make sure image is fully visible)
+	background-origin (Specifies origin position - background positioning area of image): padding-box | border-box | content-box
+
+Selectors: 
+	
+	Simple : element, id, class, universal, group
+
+	Combinators -> 
+	div > p (child combinator) : direct child of p 
+	div + p (next sibiling combinator): p is right after div / p is next sibiling of div
+	div ~ p (subsequent combinator) : all paragraphs thar are next sibiling of div will applied to CSS
+	
+	Psuedo class selectors: based on some event like :hover, :link, :focus, :visited, :active, :first-child, :last-child, :nth-child(n), :checked, :disabled
+	
+	Psuedo element selectors: Style specific part of element like ::first-line, ::first-letter, ::before, ::after , ::marker, ::selection, ::placeholder
+	
+	Attribute selectors: Style html elements based on specific attributes and attributes values like 
+	[attribute], 
+	[attribute='value'], 
+	[attribute^='value'] (selects attribute which contains given value)
+	[attribute|='value'] (selects attribute which value is exactly given value or spcified value with hyphen)
+	[attribute^='value'] (selects attribute which starts with given value)
+	[attribute$='value'] (selects attribute which ends with given value)
+	[attribute*='value'] (selects attribute which contains given value. Value doesn't have to be a whole word)
+
+Styling Links & Buttons: 
+
+	Psuedo classes : hover, active, visited, disabled
+	
+	a:link     { color: blue; }     /* Unvisited link */
+	a:visited  { color: purple; }   /* Visited link */
+	a:hover    { color: red; }      /* Mouse over link */
+	a:active   { color: green; }    /* Link being clicked */
+	
+	cursor: none | pointer | text | default | not-allowed | move | wait | help | crosshair | grab | grabbing | none 
+
 Display Property: 
 	display: block, inline, inline-block, none, flex, grid
 
@@ -31,3 +62,14 @@ Position Property: Specifies how to element should be positioned into a document
 	Absolute(Removes from normal flow and relative to ancestor element)
 	fixed(Removes from normal flow and Relative to viewport)
 	sticky(Stays in normal flow, relative to scroll container)
+
+Visibility Property & Z-index:
+
+	Visibility property shows or hides the element without changing the layout.
+	Possible values: visible(default) | hidden(hides the element but remains the space of element) | collapse
+	
+	display: none (Hides the element as well as element space)
+	
+	Z-index: Applies on positioned boxes (relative, absolute, fixed, sticky). 
+	Specifies stack order of element. An element with greater stack order is always in front of an element with a lower stack order.
+
