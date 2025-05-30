@@ -1,0 +1,152 @@
+Flex: Flexible Box Layout Model - to arrangle the items in single row or column
+
+	Container Properties: 
+		display: flex;
+		flex-direction: row(default), row-reverse, column, column-reverse
+		flex-wrap: nowrap, wrap, wrap-reverse
+		flex-flow: flex-direction && flex-wrap
+		justify-content(adjust the items Horizontally or main-axis): center, flex-start, flex-end, space-between, space-evenly, space-around
+		align-items(adjust the items vertically or cross-axis): center, flex-start, flex-end, stretch, baseline, normal
+		align-content: align-content controls how multiple rows of flex items are spaced vertically in a multi-line flex container (i.e., when flex-wrap: wrap is used). Possible 		values: stretch(default), flex-end, flex-start, center, space-around, space-between, space-evenly
+
+	Items Properties:
+		order: Specifies the order of the flex items inside the container. Value should be number. Value of order is more, it will show in last
+		flex-grow: Specifies how much a flex item will grow relative to the rest of the flex items inside the container
+		flex-shrink: Specifies how much a flex item will shrink relative to the rest of the flex items inside the container
+		flex-basis: Specifies the initial length of a flex item
+		align-self: Specifies the alignment for a flex item (overrides the flex container's align-items property)
+		flex: flex-grow & flex-shrink & flex-basis
+
+Sizing Units: 
+	Absolute (fixed) and Relative
+	
+	px: 1/96 of inch
+	vw(viewport width)
+	vh(viewport height)
+	em - relative to parent element 
+	rem - relative to root (html) element
+	% - relative to parent
+
+Box Shadow and text shadow: 
+
+	box-shadow: x-shadow y-shadow blur-radius spread-radius color
+
+CSS Variables: 
+
+	Syntax: --variable_name: variable_value
+	Ex: --white: #ffffff;
+	
+	For global scope variable create variables inside :root{}
+	
+	Use: h1{
+			--white: #ffffff;	//local scope
+			color: var(--white);
+	       }
+	
+Animations and Keyframes: 
+
+	Animation Properties: 
+		
+	animation-name: Name of animation 
+	animation-duration: how long time an animation should take to complete one cycle (mostly in seconds)
+	animation-iteration-count: Specifies the number of times an animation should be played
+	
+	animation-timing-function: Specifies the speed curve of the animation 
+	[Values: 
+		ease (default) - slow start, then fast and slow end 
+		linear - same speed from start to end
+		ease-in : slow start
+		ease-out : slow end
+		ease-in-out : slow start and end
+		cubic-bezier(n,n,n,n) : Define your own values
+	]
+	
+	animation-delay: Specifies a delay for the start of an animation
+	
+	animation-direction: Specifies whether an animation should be played forwards, backwards or in alternate cycles. [Values: Normal (fowards - default), reverse, alternate, alternate-	reverse]
+	
+	animation-fill-mode: Specifies a style for the element when the animation is not playing (before it starts, after it ends, or both)[values: forwards,backwards, both]
+	
+	animation-play-state: Specifies whether the animation is running or paused [Values: running(default), paused]
+	
+	animation: name duration timing-function delay iteration-count direction fill-mode play-state
+	
+	Keyframes: 
+	
+	The CSS @keyframes rule is used to control the steps in an animation sequence by defining CSS styles for points along the animation sequence.
+
+	An animation is created by gradually changing from one set of CSS styles to another. During an animation, you can change the set of CSS styles many times.
+
+	Specify when the style change will happen in percent, or with the keywords "from" and "to", which is the same as 0% and 100%. 0% is the beginning of the animation, 100% is when the 	animation is complete.
+	
+	Syntax: 
+	
+	@keyframes animation-name{
+		from{
+			original position
+		}
+		to{
+			changes during animation
+		}
+	}
+	
+	OR 
+	
+	@keyframes animation-name{
+		0%{}
+		50%{}
+		100%{}
+	}
+
+Transitions: 
+
+	transition-property: Name of CSS property on which transition effect should be applied [Values: all(default), none, property]
+	transition-duration: How many seconds or mili seconds transition effect takes to complete
+	transition-timing-function: Specifies the speed curve of transition effect
+	transition-delay: Specifies when transition effect will start
+	transition: property-name transition-duration transition-timing-function transition-delay
+	
+Transforms: 
+
+  2D transform: 
+
+	transform: rotate(angle of degree); [+ value clock wise, - value anti clock wise]
+	
+	transform: scale(x,y);  increase or decrease the size of element (similarly for scaleX and scaleY)
+	
+	transform: translate(x,y); moves the element from its origin position 
+	
+	transform: skew(x,y); Skews the element (skewX - horizontally and skewY - vertically)
+	
+	transform: matrix(scaleX, skewY, skewX, scaleY, translateX, translateY)
+
+Grid: 
+  
+  Grid Container Properties: 
+	
+	display: grid;
+	grid-template-columns: repeat(no of columns, width)
+	grid-template-rows:
+	grid-auto-rows:
+	grid-auto-columns:
+	row-gap:
+	column:gap
+	gap: row-gap column-gap 
+	justify-content: Aligns the items of container vertically
+	align-content : Aligns the items of container horizontally
+	place-content : align-content justify-content
+	grid-auto-flow: Specifies how auto placed items inserted in grid [Values: row, column, dense, row-dense, column-dense]
+	
+  Grid Items Properties: 
+  
+	grid-column-start: 
+	grid-column-end:
+	grid-column: 1/span 2
+	grid-row-start: 
+	grid-row-end:
+	grid-row: 1/span 2
+	
+	align-self: Aligns the specific grid items content on the column axis
+	justify-self: Aligns the specific grid items content on the row axis
+	place-self: align-self justify-self
+	grid-area: grid-row-start grid-column-start grid-row-end grid-column-end

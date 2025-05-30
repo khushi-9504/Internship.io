@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website Layout using Grid</title>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+
+      .container {
+        height: 100vh;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(50px, auto));
+        grid-template-areas:
+          "navbar navbar navbar navbar"
+          "aside section section article"
+          "footer footer footer footer";
+      }
+
+      #navbar {
+        grid-area: navbar;
+        background-color: antiquewhite;
+        border: 2px solid black;
+        height: 10vh;
+      }
+
+      #section {
+        grid-area: section;
+        background-color: lightskyblue;
+        height: 80vh;
+        border: 2px solid black;
+      }
+
+      #aside {
+        grid-area: aside;
+        background-color: lightcoral;
+        height: 80vh;
+        border: 2px solid black;
+      }
+
+      #article {
+        grid-area: article;
+        background-color: lightgreen;
+        height: 80vh;
+        border: 2px solid black;
+      }
+
+      #footer {
+        grid-area: footer;
+        background-color: burlywood;
+        height: 10vh;
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item" id="navbar">
+        Home * About * Contact Us * Services * Login * SignUp * Call Us * Email
+        Us
+      </div>
+      <div class="item" id="article">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae sint
+        eius explicabo animi odit, eligendi quos dicta nostrum, impedit
+        voluptatibus facilis, repellendus quae facere. Nesciunt, ipsa, eveniet
+        repellat in iusto, nulla repellendus suscipit pariatur culpa esse
+        placeat voluptatem animi quos?
+      </div>
+      <div class="item" id="section">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae deserunt
+        aliquid culpa dolorum est reiciendis sed, amet consequuntur qui ea neque
+        eos velit alias obcaecati architecto fuga incidunt facilis? Repellat
+        illo cumque veritatis aliquam doloremque deserunt magni nostrum, dolores
+        ipsa ipsum rem adipisci, debitis, nulla ex beatae? Non dicta, sequi
+        voluptatum ducimus soluta at ipsum doloribus pariatur tempora voluptates
+        corporis. Provident animi, laboriosam eum ipsum quo molestias deserunt
+        esse voluptatem iste laudantium repudiandae pariatur eos, fugiat
+        praesentium, nesciunt facilis beatae architecto quaerat repellat?
+        Corrupti necessitatibus ipsam ipsum aliquid quae. Sapiente saepe nisi
+        magni impedit ipsum fugiat distinctio eius repellat facere eum quisquam
+        delectus placeat, voluptate quo deleniti recusandae quia quos similique?
+        Soluta fugiat inventore blanditiis aut. Eius voluptatum deleniti cum
+        quos ullam, magnam officiis delectus culpa mollitia alias possimus iusto
+        quasi aliquam non similique veritatis quisquam ipsa ad vitae adipisci!
+        Alias dicta officiis amet animi libero quia similique, corporis fugit
+        molestias sed at officia, voluptate qui aut in perspiciatis dolorum iure
+        eligendi earum, debitis et labore tenetur illo voluptates. Sit at
+        excepturi, deserunt distinctio alias illum architecto quis molestias!
+        Dolore aperiam, quae unde quam nostrum nemo magnam! Veniam consequuntur
+        sequi amet eveniet quos veritatis quisquam numquam aperiam. Quam,
+        dignissimos vero.
+      </div>
+      <div class="item" id="aside">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum
+        commodi perferendis totam veniam illo laboriosam fuga temporibus magnam
+        hic exercitationem!
+      </div>
+      <div class="item" id="footer">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+        Exercitationem, aperiam! Optio labore sed impedit repudiandae quisquam
+        unde et. Suscipit, quos.
+      </div>
+    </div>
+  </body>
+</html>
