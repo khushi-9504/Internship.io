@@ -1,0 +1,20 @@
+Media Queries: 
+
+	Media Types: all, screen, print
+	
+	Features: Orientation, width, height, min-width/height, max-width/height
+	
+	Keywords: only, not, and 
+	
+	@media (media feature) {
+		css code
+	}
+
+Responsive Design: 
+	
+	Ways to achieve responsive design: 
+	
+	- Setting up viewport
+	- Use max-width / max-height 
+	- Using CSS Media queries
+	- Using rem / vh / vw units over pixels
