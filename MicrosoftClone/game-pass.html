@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Xbox Game Pass Ultimate</title>
+    <style>
+      /* Reset and base */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      .game-pass-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 4rem;
+        gap: 2rem;
+        background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+        color: white;
+      }
+
+      .game-pass-container img {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        display: block;
+        border-radius: 8px;
+      }
+
+      .left-part {
+        max-width: 400px;
+        color: white;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .left-part h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+
+      .left-part p {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.4;
+      }
+
+      .buttons {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .card-btn {
+        background-color: #0067b8;
+        color: white;
+        padding: 0.8rem 1.6rem;
+        border: none;
+        border-radius: 4px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .card-btn:hover {
+        background-color: #005a9e;
+      }
+
+      .video-button {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: white;
+        cursor: pointer;
+        font-weight: 600;
+      }
+
+      .video-button img {
+        width: 25px;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 900px) {
+        .game-pass-container {
+          flex-direction: column;
+          padding: 1rem 2rem;
+        }
+
+        .left-part {
+          max-width: 100%;
+          text-align: center;
+          order: 2;
+        }
+
+        .game-pass-container img {
+          max-width: 100%;
+          order: 1;
+          border-radius: 0;
+        }
+
+        .left-part h2 {
+          font-size: 2rem;
+        }
+
+        .left-part p {
+          font-size: 1rem;
+        }
+
+        .buttons {
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .left-part h2 {
+          font-size: 1.5rem;
+        }
+
+        .left-part p {
+          font-size: 0.9rem;
+        }
+
+        .card-btn {
+          padding: 0.6rem 1.2rem;
+          font-size: 0.9rem;
+        }
+
+        .video-button {
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="game-pass-container">
+      <div class="left-part">
+        <h2>Xbox Game Pass Ultimate</h2>
+        <p>
+          Play new titles on day one. Enjoy hunderds of high-quality games with
+          friends on console, PC, or cloud.
+        </p>
+
+        <div class="buttons">
+          <button class="card-btn">Join now</button>
+          <div class="video-button">
+            <img src="images/video-icon.png" alt="Play Video" />
+            <span>Watch the video</span>
+          </div>
+        </div>
+      </div>
+      <img src="images/game-pass-img1.avif" alt="Game Pass Image" />
+    </section>
+  </body>
+</html>
