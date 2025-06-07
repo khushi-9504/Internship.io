@@ -1,0 +1,223 @@
+How JS works behind the scenes?: 
+
+For any browser, to run the JS code needs JS Runtime environment which consists of some components: JS Engine, Web APIs, Call Stack Queue, Microtask Queue. 
+
+JS Engine: It's a computer program which executes the JS code. It consists of two parts: Heap Memory and Call Stack.
+
+Heap: It's an unstructured memory pool which stores all the objects that a JS application needs.
+
+Call Stack : It is where JS code gets executed using something called as execution context.
+
+Web APIs : It provides extra functionalities to JS engine which are not part of JS language itself like DOM, Timers, console log, Fetch.
+
+Callback Queue : It is a data structure that contains all the callback functions that are ready to be executed.  
+
+Microtask Queue : It stores special callback functions which has higher priority than the callback functions waiting inside callback queue. 
+
+To run JS code in server, we use NodeJS. NodeJS runtime environment has also same components as Browser Runtime Environment except Web APIs, it has C++ bindings and Thread Pool.
+
+------------
+
+The Programs which we write using any programming language like C, Java, C++, JavaScript etc are called high level language. It is human readable.
+
+A computer's processor only understands 0s and 1s. So program written in high level language needs to be converted to 0s and 1s. This converted code is called as machine code.
+
+The conversion of high level language to machine code can be done by using Compilation or Interpretation. 
+
+Compilation : Entire high level language code is converted into machine code at once and written to a binary file that can be executed by browser.
+
+Interpretation : It runs through the source code and executes it line by line. 
+
+JUST IN TIME Compilation : Entire code is converted into machine code at once and then excuted immediately (Machine code is not stored in any file).
+
+Process JS Engine Follows to run any code:
+
+Parsing: Reads the code line by line, checks the syntax and all, if it finds any errors, it stops the execution and throws error. 
+
+Abstract Syntax Tree: Parsed code is converted into ATS. 
+
+Compilation / Interpretation : AST is compiled to machine code and Machine code is executed in call stack of JS Runtime Environment.
+
+Modern JS Engine first creates unoptimized machine code and starts execution meanwhile in parallel it also starts optimizing the unoptimized machine code and starts execution with swapping it unoptimized machine code.
+
+-----
+
+JavaScript can be executed inside the callback of JS Runtime Environment. Callback is consists of Execution Context. 
+
+Execution context is an environment inside which a piece of JS code get executed. 
+
+When we run any JS code, after compilation, it is ready to execute. Code is executed in callstack. So first, Global Execution Context is created inside the callstack which stores all the top level codes which are not part of any functions. For any long JS code, one global execution context will be created. When any functions is called, a new global execution context will be created to store all the information related to function to execute the function. 
+
+JS Engine creates an execution context in two phases: Creation Phase and Execution Phase.
+
+Creation Phase : It's the phase in which JS engine has called a function, but its execution has not yet started. During the creation phase of executon context, three things are created: Variable Object, Scope Chain and This variable.
+
+Variable Object : It is a property of execution context which contain all the variables, function arguments and inner functions declaration information. 
+
+Scope Chain : After creating variable object, the JS engine also initializes the scope chain which is a list of all variable objects inside which current function exists. It also includes variable object of global execution context. Scope chain also contains the current function variable object. 
+
+This variable : JS engine initializes the value of this variable. 
+
+Execution Phase: JS engine will scan through the function to update the variable object with the values of variables and execute the code.
+
+Sample Code: 
+
+	function studentDetails(studentId, name){
+		const university = 'Oxford University';
+		const campus = 'London';
+		
+		function printDetails(){
+			console.log(`Student ID: ${studentId}, Student Name: ${name}, University name: ${university}, Campus: ${campus}`);
+		}
+	}
+	studentDetails(101, 'Steve');
+
+	For above code, variable object will be created between global execution context is created and before studentDetails(). 
+	
+	executionContextObject : {
+		variableObject : {},
+		
+		scopechain: [],	
+		
+		this
+	}
+	
+	studentDetailsVariableObject : {
+		argumentObject : {
+			studentId: 101,
+			name: 'Steve'
+		}
+		
+		university: uninitialized,
+		campus: uninitialized,
+		printDetails: f(){}
+	}
+	
+	Note: In variable Object, variable with var keyword will be stored with undefined and variable with const and let keyword will be stored with uninitialized. 
+
+-------
+
+Hoisting : Some of variables and functions are available to use in JS program before it is declared. This is called as hoisting.
+
+Ex: 
+	console.log(a); //undefined
+	var a = 3;
+
+Variables with var keyword and functions (function funName(){}) will be hoisted. Variables with let and const keyword, function expression can't be hoisted. 
+
+Temporal Dead Zone is the zone between the starting scope of variable and when the variable is declared. 
+
+TDZ is ES6 feature which comes to overcome the issue with the variable declared using var keyword which cause serious bugs.  
+
+Scope : It controls how JS variables are organized and accessed by JS engine. It tells where variables and JS functions leaves and where can be accessed certain variable and functions inside JS engine. 
+
+Global Scope : The top level code i.e. the variables and functions that are not present inside any other function or block is called as global variables and functions. They are accessible through out the whole code.
+
+Function Scope : Each and every function in JS creates a scope. Variables and functions are declared inside any function are only accessible inside that function. 
+
+Block Scope : Variables declared using let or const, inside a block is only accessible inside that block and not outside of it.
+
+Note : A variable declared using var keyword is function scoped even if it's declared inside a code block. A function will have block scope if it's defined inside the strict mode.
+
+-------
+
+Lexical Scope : Lexical scoping means the way variables are organized and accessed is entirely controlled by the placement of functions and of blocks in programs code.
+
+If a function or code block is sitting lexically within another scope, then that function or code block will have access to all variables and functions declared inside its parent scope.
+
+Scope chain tells to which variable and functions the current scope has access to. It is implemented by Lexical environment. 
+
+Lexical environment : A lexical environment is a structure that holds identifier-variable mapping. Here identifier refers to the name of variable/functions and the variable is reference to actual object. 
+
+During creation phase, a lexical environment gets created for the scope of current function. In creation phase, lexical environment is identical to variable object. 
+
+Note : Scopechain only works in upward direction. Means child has access to its parent information but parent doesn't have access to child information. 
+
+------
+
+This keyword : It is a special variable that is created for every execution context and therefore any function. It will always take the value of the owner of the function in which the this keyword is used.  The value of this variable is only assigned when the function is actually called i.e. runtime.
+
+Global Scope : Points to window object
+
+Regular function : value of this is undefined in strict mode else it points to window object in normal mode
+
+function greet(){
+	console.log(this);   //window but if i use in strict mode than undefined
+}
+
+Method call : this variable point to object on which that method is called.
+
+let john = {
+	year: 1980,
+	calcAge(birthyear){
+		console.log(2025-birthyear);
+		console.log(this); //john object
+		
+		function print(){
+			console.log(this);	//window
+		}
+		print();
+	}
+}
+john.calcAge(1666);
+
+let mark = {
+	year : 2000;
+}
+mark.calcAge = john.calcAge;	//mark object
+mark.calcAge(1220);
+
+Arrow function : It donesn't have its own this keyword. It uses the this keyword of its parent scope not current scope.
+
+let x = () => {
+	console.log(this); //window
+}
+x();
+
+let john = {
+	year: 2001,
+	calcAge(birthyear){
+		console.log(this);	//john object
+		
+		let x = () =>{
+			console.log(this);	//john object
+		}
+		x();
+	}
+}
+
+john.calcAge(2000);
+
+
+let john = {
+	year: 1920,
+	firsname: "john",
+	calcAge(){
+		console.log(2025-this.year);
+		console.log(this);	//john object
+	},
+	greet: ()=>{
+		console.log(`Hiii  ${firsname}`);	//Hiii undefined
+	}
+}
+john.calcAge();
+john.greet();	//undefined because greet is arrow function, so it has no this variable. So it inherits from its parent scope.
+
+Event Handler : this keyword points to the DOM element on which the handler function is attached.
+
+Note : this variable will never point to the function in which we are using it. It also not point to the variable object of the function execution context.
+
+let john = {
+	year: 1920,
+	firsname: "john",
+	calcAge(){
+		console.log(2025-this.year);
+		console.log(this);	//john object
+		
+		greet(){
+		console.log(`${this.firsname} was born in ${this.year}.`); //undefined, undefined	
+		}
+	}
+}
+john.calcAge();
+
