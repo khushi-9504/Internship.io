@@ -1,0 +1,105 @@
+Data Types: Primitive (Call by value) and Non-primitive (Reference Data Types)
+
+Primitive Data Types : String, Number, BigInt, null, Undefined, NaN, Symbol, Boolean
+
+const id = Symbol('123');
+
+Non-primitive Data Types : Array, Objects, Functions
+
+NOTE : Type of different datatype
+	
+- typeof 12	//number;
+- typeof "abc"	//string;
+- typeof true	//boolean;
+- typeof null	//object;
+- typeof undefined	//undefined;
+- typeof symbol	//symbol;
+- typeof NaN	//number;
+- typeof array	//object
+- typeof function	//function
+- typeof object		//object
+
+
+Loose Equality: 
+- In JavaScript, the == operator is called loose equality or abstract equality.
+- It compares two values for equality after performing type coercion if the types are different.
+
+Type Coercion : 
+- Type coercion is the process where JavaScript automatically converts one data type to another in order to make the values comparable.
+
+- When comparing two values of different types using ==, JavaScript follows specific rules to determine which value should be converted:
+
+	1. If types are the same → Compare values directly.
+	
+	   Ex: 2==2 // true, 2==5 //false
+	   
+	2. If one is a number and the other is a string → The string is converted to a number. 
+	
+	   Ex: "5" == 5 // "5" is converted in number and comparision will be done. 5 == 5 - true
+	
+	3. If one is a boolean → The boolean is converted to a number: true → 1, false → 0
+	
+	   Ex: true == 1     // true → true → 1, 	false == 0    // true → false → 0
+	
+	4. If one is an object and the other is a primitive (number/string/boolean) → The object is converted to a primitive using: .valueOf() or .toString().
+	
+	   Ex: [1] == "1"    // true → [1] → "1",  [] == 0       // true → [] → "" → 0,  [null] == 0   // true → [null] → "" → 0
+	
+	5. If one is null and the other is undefined → They are equal only to each other.
+	
+	   Ex: null == undefined  // true,	null == 0   // false,	undefined == 0     // false
+
+Memory: 
+
+- Stack Memory (Primitive datatype) : Gives copy of variable
+- Heap Memory (Non-primitive datatype) : Gives reference of original value
+
+Example for Stack Memory : 
+
+	let userOneState = "Gujarat";
+	let userTwoState = userOneState;
+	
+	console.log(userOneState);	//Gujarat
+	console.log(userTwoState);	//Gujarat
+	userTwoState = "Rajasthan";
+	console.log(userOneState);	//Gujarat
+	console.log(userTwoState);	//Rajasthan
+	
+Example for Heap Memory : 
+
+	let userOne = {
+		name : "abc",
+		email : "abc@gmail.com"
+	}
+	
+	let userTwo = userOne;
+	
+	console.log(userOne);//name:abc, email:abc@gmail.com
+	console.log(userTwo);//name:abc, email:abc@gmail.com
+	
+	userTwo.email = "abc@google.com";
+	console.log(userTwo.email);	//abc@google.com
+	console.log(userOne.email);	//abc@google.com
+	
+-------------------------------
+
+Strings : 
+	length
+	charAt()
+	indexOf()
+	lastIndexOf()
+	startsWith()
+	endsWith()
+	includes()
+	substr()
+	substring()
+	slice()
+	split()
+	toUpperCase()
+	toLowerCase()
+	toString()
+	replace(search, replace)
+	replaceAll()
+	concat()
+	match()
+	trim(), trimStart(), trimEnd()
