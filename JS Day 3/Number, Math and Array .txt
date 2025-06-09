@@ -1,0 +1,57 @@
+Number: const myNumber = new Number();
+
+isNaN()
+isFinite()
+parseInt()
+toFixed()
+
+
+Math : 
+
+abs()
+sqrt()
+round()
+floor()
+ceil()
+power(base,exponent)
+random() -  between 0 and 1
+min(), max()
+
+
+Dates and Time: const myDate = new Date();
+
+Date.toString()
+toISOString()
+toDateString()
+toTimeString()
+toLoacaleString()
+toLocaleDateString()
+toLocaleTimeString()
+now()
+getDate(), getMonth(), getFullYear(), getDay()
+getHours(), getMinutes(), getSeconds()
+
+-------------------
+
+Array : 
+
+const myArray = new Array(values);
+const myArray = [1,2,"hello",true];
+
+
+length
+push() : inserts element at the end
+pop() : remove from last
+unshift() : inserts element at the start
+shift() : remove from start
+includes() : is include specified value
+indexOf() : returns index of element
+join() : Converts array in string
+slice(start, end) : Returns the part of an array
+splice(start index, deleteCount, item1, ..., itemN) : Adds, remove or replace items and return removed elements array 
+concat() : merges two array and returns new array
+flat() : Returns new array with all sub array elements flattened into single level upto specified depth
+isArray() : Checks given value is array or not
+from() : Convert the non-array into array
+of() : Converts different values into an array
+
