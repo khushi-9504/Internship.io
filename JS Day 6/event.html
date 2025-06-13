@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events</title>
+  </head>
+  <body>
+    <h2>Amazing image</h2>
+    <div>
+      <ul id="images">
+        <li>
+          <img
+            width="200px"
+            id="photoshop"
+            src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt="photoshop"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="japan"
+            src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="river"
+            src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="owl"
+            src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="prayer"
+            src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <a href="https://google.com" id="google">Google</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+
+  <script>
+    /*
+    Ways to add event to elements: By adding event attribute in html element, By adding event method, By using addEventListener method
+
+    Best approach is to use addEventListener
+    */
+
+    // document.getElementById("owl").onclick = function () {
+    //   alert("You clicked on owl");
+    // };
+
+    // document.getElementById("owl").addEventListener(
+    //   "click",
+    //   function () {
+    //     alert("You clicked on owl");
+    //   },
+    //   false
+    // );
+
+    /*Event Object:
+    type of events, timestamp, defaultPrevented,
+
+    target, toElement, srcElement, currentTarget,
+
+    clientX, clientY, screenX, screenY,
+
+    altkey, ctrlkey, shiftkey, keycode
+
+    Event Propogation : Event Bubbling (Bottom to top), Event Capturing (Top to Bottom), Event Delegation
+
+    */
+
+    // document.getElementById("owl").addEventListener("click", function () {
+    //   console.log(event);
+    // });
+
+    // document.querySelector("#images").addEventListener(
+    //   "click",
+    //   function () {
+    //     console.log("Clicked from the ul inside images");
+    //   },
+    //   false
+    // );
+
+    //When addEventListener, third parameter is false, means event bubbling, event goes from bottom element to top element and when third parameter is true, means event capturing, event goes from top element to bottom element
+
+    // document.querySelector("#owl").addEventListener(
+    //   "click",
+    //   function () {
+    //     console.log("owl clicked");
+    //   },
+    //   false
+    // );
+
+    //Task : When you click on any image, remove the image
+
+    document
+      .querySelector("#images")
+      .addEventListener("click", function (event) {
+        console.log(`${event.target.id} clicked`);
+        event.preventDefault();
+        // document.getElementById(event.target.id).remove();
+
+        // console.log(event.target.tagName);
+
+        if (event.target.tagName === "IMG") {
+          document.getElementById(event.target.id).remove();
+        }
+      });
+  </script>
+</html>

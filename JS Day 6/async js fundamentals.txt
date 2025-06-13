@@ -1,0 +1,6 @@
+JavaScript is Synchronous and Single Threaded language. It means that when a script is executed, it runs from top to bottom, line by line. It does not execute any other script until the current script is completed. This is known as Synchronous. 
+
+Blocking Code : Block the flow of program
+
+
+Non Blocking Code : Does not block the execution

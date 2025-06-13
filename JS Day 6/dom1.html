@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Element</title>
+  </head>
+  <body>
+    <div class="parent">
+      <div class="day">Monday</div>
+      <div class="day">Tuesday</div>
+      <div class="day">Wednesday</div>
+      <div class="day">Thursday</div>
+    </div>
+  </body>
+
+  <script>
+    const parent = document.querySelector(".parent");
+    parent.style.backgroundColor = "lightblue";
+    parent.style.fontWeight = "bold";
+    parent.style.padding = "5px";
+    parent.style.border = "1px solid black";
+    parent.style.borderRadius = "15px";
+    // console.log(parent);
+
+    const child = document.querySelectorAll(".day");
+    console.log(child);
+
+    const firstChild = document.querySelector(".day");
+    console.log(firstChild);
+
+    const firstChildContent = document.querySelector(".day").innerHTML;
+    console.log(firstChildContent);
+
+    firstChild.style.color = "green";
+    firstChild.style.fontWeight = "bold";
+    firstChild.style.fontSize = "20px";
+
+    console.log(firstChild.parentElement);
+
+    console.log(parent.firstElementChild.innerText);
+    console.log(parent.lastElementChild.innerText);
+
+    console.log(firstChild.nextElementSibling);
+
+    child.forEach((element) => {
+      console.log(element.innerText);
+    });
+  </script>
+</html>
