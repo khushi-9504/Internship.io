@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keyboard Key Detector</title>
+  </head>
+  <body>
+    <div class="insert">
+      <p>Press the key and it will be detected</p>
+      <div class="keyInfo"></div>
+    </div>
+  </body>
+
+  <script>
+    const insert = document.getElementById("insert");
+
+    window.addEventListener("keydown", (event) => {
+      // insert.innerHTML = `<div class='keyInfo'>
+      //   <table>
+      //     <tr>
+      //       <th>Key</th>
+      //       <th>KeyCode</th>
+      //       <th>Code</th>
+      //     </tr>
+
+      //     <tr>
+      //       <td>(${event.key}===' ' ? 'space' : ${event.key})</td>
+      //       <td>${event.keyCode}</td>
+      //       <td>${event.code}</td>
+      //     </tr>
+      //   </table>
+
+      //   </div>`;
+
+      console.log(
+        `${event.key === " " ? "Space" : event.key}, ${event.keyCode}, ${
+          event.code
+        }`
+      );
+    });
+  </script>
+</html>

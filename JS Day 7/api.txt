@@ -1,0 +1,2 @@
+JSON.parse() - Converts string into object
+JSON.stringify() - Converts object into string
