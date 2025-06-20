@@ -1,0 +1,45 @@
+TypeScript - Super set of Javascript which allows you to write better JS code with type safety.
+
+What TypeScript does : Static Checking
+
+TypeScript Types :
+
+- primitives : string, number, boolean
+- tuple : typed array with predefined length of array and types of each index 
+- array 
+- any (any avoids type checking in specified variables, to stop this behaviour we can change the setting in tsconfig.json file by noImplicitAny)
+- Functions : Parameter type annotations, return type annotations
+- Object types
+- Union  types
+- Type Aliases
+- Interfaces
+- Type Assertions
+- Literal types 
+- null and undefined
+- void, unknown, never
+- Enum
+- Less common primitives : bigint, symbol
+
+Syntax : let variableName: type = value;
+
+Functions: 
+
+function createUser(name: string, age: number, email: string){
+  return name,age,email;
+}
+
+function createUser(name: string, age: number, email: string): string{
+  return `Welcome ${name}`;
+}
+
+Type Alias : 
+
+type User = {
+  name: string;
+  age: number;
+  email: string;
+}
+
+function createUser(userInfo: User): User{
+  return userInfo;
+}

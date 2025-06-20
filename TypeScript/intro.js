@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var greetings = "Hello , World!";
+console.log(greetings);
+console.log(greetings.toUpperCase());
+var userId = 12345;
+// userId = "1234";
+console.log(userId);
+var isAdmin = true;
+console.log(isAdmin);
+console.log(typeof isAdmin);
