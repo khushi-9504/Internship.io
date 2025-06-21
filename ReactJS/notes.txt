@@ -1,0 +1,55 @@
+React is Javascript library for building user interfaces. It is used for creating reusable UI components. 
+
+Features : Components based architecture, Virtual DOM, One-way data binding, JSX, etc.
+
+JSX : JSX is a syntax extension for JavaScript. It allows you to write HTML-like code in your JavaScript files. It is used to create React components.
+
+Components: Functional Components and Class Components
+
+Functional Components : 
+
+function PrintName(){
+
+  let name="abc xyz";
+
+  return(
+    <>
+      <h1>Hello, {name}</h1>
+    </>
+  );
+}
+
+Class Components : 
+
+class PrintName extends React.Component{
+  
+  render(
+    let name = "abc xyz";
+    return <h2>Hello, {name}</h2>;
+  );
+}
+
+LifeCycle of Class Components : Mounting, Updating and Unmounting
+
+1. Mounting means putting elements into the DOM. React has four built-in methods that gets called, in this order, when mounting a component:
+
+  constructor()
+  getDerivedStateFromProps()
+  render()
+  componentDidMount()
+
+The render() method is required and will always be called, the others are optional and will be called if you define them.
+
+2. The next phase in the lifecycle is when a component is updated. A component is updated whenever there is a change in the component's state or props. React has five built-in methods that gets called, in this order, when a component is updated:
+
+  getDerivedStateFromProps()
+  shouldComponentUpdate()
+  render()
+  getSnapshotBeforeUpdate()
+  componentDidUpdate()
+
+3. The next phase in the lifecycle is when a component is removed from the DOM, or unmounting as React likes to call it. React has only one built-in method that gets called when a component is unmounted:
+
+  componentWillUnmount()
+
+Props: Props stands for Properties. Props are immutable values that are passed to a component from its parent. 
