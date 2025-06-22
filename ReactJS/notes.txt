@@ -53,3 +53,17 @@ The render() method is required and will always be called, the others are option
   componentWillUnmount()
 
 Props: Props stands for Properties. Props are immutable values that are passed to a component from its parent. 
+
+Lists: JavaScript has a built-in function called map() that can be used to render lists of items. The map() function takes a function as an argument and applies it to each item in the list. The function should return a JSX element for each item in the list. 
+
+Keys: React uses a concept called keys to keep track of the items in a list. Keys are unique identifiers. They are used to identify which items in the list have changed, are added, or are removed. If you don't specify a key, React will use the index of the item in the list as the key. 
+
+State: State is an in-built react object, which stores information of the component. It can be used to store data that changes over time. whenever the state changes, the component re-renders. setState or setCount doesn't update the values immediately, it keeps the changes in a queue and updates the state after the current batch of event handlers has finished. 
+React batches multiple state updates into a single re-render to improve performance. Batching means React groups multiple setState() calls together and updates the DOM once instead of on every call. 
+
+
+const [variable, setVariable] = useState(initialValue);
+
+CSS Styling in React : 3 ways to add CSS to React components: 1. Inline Styles: You can add styles directly to the JSX element using the style attribute. 2. External CSS File 3. CSS Modules: You can use CSS modules to import CSS files and use the styles in your React components. 
+
+Conditional Rendering: Conditional rendering is a feature in React that allows you to render different components based on certain conditions. There are several ways to do conditional rendering in React, including using the if statement, the ternary operator, and the switch statement. && operator can also be used for conditional rendering. 
