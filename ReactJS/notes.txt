@@ -67,3 +67,15 @@ const [variable, setVariable] = useState(initialValue);
 CSS Styling in React : 3 ways to add CSS to React components: 1. Inline Styles: You can add styles directly to the JSX element using the style attribute. 2. External CSS File 3. CSS Modules: You can use CSS modules to import CSS files and use the styles in your React components. 
 
 Conditional Rendering: Conditional rendering is a feature in React that allows you to render different components based on certain conditions. There are several ways to do conditional rendering in React, including using the if statement, the ternary operator, and the switch statement. && operator can also be used for conditional rendering. 
+
+Event Handling: Event handling is the process of responding to user interactions with a React application. In React, event handling is typically done using the event handler function. The event handler function is a function that is called when a specific event occurs. For example, when a button is clicked, the event handler function is called. 
+
+Hooks: Hooks are a new way to use state and other React features in functional components. They let you "hook into" React state and lifecycle methods from function components. Hooks don't work inside classes. They let you use state and other React features without changing your component from a function to a class. There are several types of hooks, including useState, useEffect, useContext, and useReducer. 
+
+Controlled and Uncontrolled Components: 
+
+Controlled Components : A controlled component in React is an element whose state is controlled by React itself. This means that the component's state is stored in a React component's state and can only be updated by triggering a state change via React’s setState() method.
+
+Uncontrolled Components : An uncontrolled component in React refers to a component where the form element's state is not directly controlled by React. Instead, the form element itself maintains its own state, and React only interacts with the element indirectly through references (refs). - use of useRef() hook
+
+Error Handling in react: Two ways to handle errors in React: 1. Try-catch block  2. Error Boundary: Error Boundary is a higher-order component that catches JavaScript errors anywhere in its component tree, logs the error, and displays a fallback UI instead of the component tree that crashed. It can be used to catch and display errors in a more user-friendly way. 
