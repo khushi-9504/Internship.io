@@ -79,3 +79,27 @@ Controlled Components : A controlled component in React is an element whose stat
 Uncontrolled Components : An uncontrolled component in React refers to a component where the form element's state is not directly controlled by React. Instead, the form element itself maintains its own state, and React only interacts with the element indirectly through references (refs). - use of useRef() hook
 
 Error Handling in react: Two ways to handle errors in React: 1. Try-catch block  2. Error Boundary: Error Boundary is a higher-order component that catches JavaScript errors anywhere in its component tree, logs the error, and displays a fallback UI instead of the component tree that crashed. It can be used to catch and display errors in a more user-friendly way. 
+
+Hooks: 
+
+useEffect : It is a hook that allows you to run some side effects (like API calls, setting timers, etc.) after rendering a component. It is called after every render. It can be used to fetch data from an API, update the DOM, or perform other side effects. It takes two arguments: a function to run and an array of dependencies. 
+
+Dependency Value: [] - only once render , [variable] - every time variable changes, [variable1, variable2] - every time variable1 or variable2 changes, no dependency array - after every render
+
+useContext : useContext is a React Hook that allows you to share state or values globally across your app without passing props manually through every component level (prop drilling).
+
+Steps: 1. Create a context using the createContext() function. 2. Wrap your app with the Provider component and pass the context to it. 3. Use the useContext() hook in your components 
+
+useReducer : useReducer is a hook that allows you to manage state changes in a more predictable and scalable way. It is similar to useState, but it allows you to handle more complex state changes. It takes two arguments: a reducer function and an initial state. The reducer function is a function that takes the current state and an action function as arguments and returns a new state. The action function is a function that describes the action that should be taken to update the state.  
+
+syntax: const [state, dispatch] = useReducer(reducer, initialState);
+
+Custom Hooks: A custom hook is a reusable function in React that lets me group related useState, useEffect, or other logic into a single function. This helps me keep components clean and makes logic easier to reuse across different parts of the app.
+
+Fragments: Fragments are a way to group a list of children without adding extra nodes to the DOM. They are useful when you need to group a list of children without adding extra nodes to the DOM. They are created using the Fragment component. 
+
+syntax: <React.Fragment></React.Fragment> OR <></>
+
+React Dev Tools: React Dev Tools is a browser extension that allows you to inspect and debug React components in the browser. It provides a range of features, including the ability to inspect the component tree, identify performance bottlen cks, and debug issues with state and props. It is available for Chrome and Firefox. 
+
+Environment Variables: Environment variables are variables that are set outside of the application and can be accessed within the application. They are useful for storing sensitive information, such as API keys, that should not be hardcoded into the application. They can be set in the environment or in a .env file. 
