@@ -117,3 +117,11 @@ Reconcillation: Reconciliation is the process of comparing the virtual DOM with 
 Virtual DOM: The virtual DOM is a lightweight in-memory representation of the actual DOM. It is used by React to optimize performance by minimizing the number of DOM mutations. 
 
 Diffi Algorithm: The diffi algorithm is an algorithm used by React to compare the virtual DOM with the actual DOM and update the actual DOM to match the virtual DOM. It is an optimization technique used by React to improve performance. 
+
+React Hook Form: React Hook Form is a library that provides a simple and intuitive way to handle form data in React applications . It provides a set of hooks that can be used to manage form state, validate form data, and handle form submission. 
+
+  useForm() - main hook, register() - register form element with the hook, submitHandler() - handle the submission of form, watch() - track the input field current value
+
+useNavigate: useNavigate is a hook that allows you to navigate between routes in a React application. It is used in conjunction with the react routing to navigate between routes. 
+
+useParams: useParams is a hook that allows you to access the URL parameters of a route. It is used in conjunction with the useNavigate hook to navigate to a different route. It returns an object with the URL parameters as properties. 
