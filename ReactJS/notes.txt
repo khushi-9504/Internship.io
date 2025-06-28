@@ -100,8 +100,6 @@ Fragments: Fragments are a way to group a list of children without adding extra 
 
 syntax: <React.Fragment></React.Fragment> OR <></>
 
-React Dev Tools: React Dev Tools is a browser extension that allows you to inspect and debug React components in the browser. It provides a range of features, including the ability to inspect the component tree, identify performance bottlen cks, and debug issues with state and props. It is available for Chrome and Firefox. 
-
 Environment Variables: Environment variables are variables that are set outside of the application and can be accessed within the application. They are useful for storing sensitive information, such as API keys, that should not be hardcoded into the application. They can be set in the environment or in a .env file. 
 
 State Lifting: State lifting is the process of moving state from a child component to a parent component. It is useful when a child component needs to update the state of a parent component. It involves passing a function as a prop from the parent component to the child component, and then calling that function to update the state. 
@@ -125,3 +123,13 @@ React Hook Form: React Hook Form is a library that provides a simple and intuiti
 useNavigate: useNavigate is a hook that allows you to navigate between routes in a React application. It is used in conjunction with the react routing to navigate between routes. 
 
 useParams: useParams is a hook that allows you to access the URL parameters of a route. It is used in conjunction with the useNavigate hook to navigate to a different route. It returns an object with the URL parameters as properties. 
+
+Axios: Axios is a promise-based HTTP client for the browser and Node.js. It's used to send HTTP requests (GET, POST, PUT, DELETE, etc.) and handle responses easily. It’s widely used in React apps to connect with backend APIs. It automatically parse the data into JSON format. try..catch block is used to handle the errors. 
+
+React Developer Tools: React Developer Tools is a browser extension that helps you inspect, debug, and optimize React apps directly from the browser. It adds a new “Components” and “Profiler” tab to browser’s developer tools. 
+
+    Components – inspect React component hierarchy and props/state
+
+    Profiler – analyze component performance (render times, updates)
+
+Loading, Error and Success states: These are three states that are commonly used in React applications. They are used to handle different scenarios such as when data is being loaded, when an error occurs, and when data is successfully loaded. They are typically used with the useState hook. 
