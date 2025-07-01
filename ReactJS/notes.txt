@@ -133,3 +133,9 @@ React Developer Tools: React Developer Tools is a browser extension that helps y
     Profiler – analyze component performance (render times, updates)
 
 Loading, Error and Success states: These are three states that are commonly used in React applications. They are used to handle different scenarios such as when data is being loaded, when an error occurs, and when data is successfully loaded. They are typically used with the useState hook. 
+
+Forwarding ref: Forwarding ref is a technique used to pass a reference from a parent component to a child component. It is used when a child component needs to access a DOM node that is not a direct child of the parent component. It is typically used with the useRef hook. 
+
+Portals: Portals are a feature in React that allows you to render children into a different DOM location. They are useful when you need to render a component outside of its normal parent-child hierarchy. They are created using the Portal component. 
+
+Error Boundary: Error Boundary is a component that catches and handles errors in its child components. It is useful when you need to handle errors in a centralized way. It is typically used with the componentDidCatch lifecycle method. 
