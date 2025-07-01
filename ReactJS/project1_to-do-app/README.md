@@ -21,15 +21,11 @@ A simple and responsive To-Do list application built using **React**, **TypeScri
 
 ## How to use in your local machine
 
-- Step 1: Clone the repository
-  git clone https://github.com/yourusername/react-ts-todo-app.git
-  cd react-ts-todo-app
+- Step 1: Clone the repository<br/>git clone https://github.com/yourusername/react-ts-todo-app.git<br/>cd react-ts-todo-app
 
-- Step 2: Install dependencies
-  npm install
+- Step 2: Install dependencies<br/>npm install
 
-- Step 3: Start the application
-  npm run dev
+- Step 3: Start the application<br/>npm run dev
 
 ## Future Improvements
 
