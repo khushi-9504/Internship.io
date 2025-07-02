@@ -1,48 +1,50 @@
-import { useContext, useRef, type FormEvent } from "react";
+import { useRef } from "react";
 import style from "./AddToDo.module.css";
-import { TodoItemsContext } from "../../Store/ToDoContext";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../Store/todoSlice";
 
 const AddToDo = () => {
-  const { addNewItem } = useContext(TodoItemsContext);
-  let textRef = useRef<HTMLInputElement>(null);
-  let dateRef = useRef<HTMLInputElement>(null);
+  const dispatch = useDispatch();
+  const nameRef = useRef<HTMLInputElement>(null);
+  const dateRef = useRef<HTMLInputElement>(null);
 
-  const handleNewItem = (e: FormEvent) => {
-    e.preventDefault();
+  const handleAddItem = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-    const todo = textRef.current?.value;
-    const date = dateRef.current?.value;
+    const todoName = nameRef.current?.value.trim();
+    const dueDate = dateRef.current?.value;
 
-    if (todo && date) {
-      addNewItem(todo, date);
-      // textRef.current!.value = '';
-      // dateRef.current!.value = '';
+    if (!todoName || !dueDate) return;
 
-      if (textRef.current && dateRef.current) {
-        textRef.current.value = "";
-        dateRef.current.value = "";
-      }
-    } else {
-      alert("Please provide task and duedate");
-    }
+    const newTodo = {
+      id: Date.now(),
+      todoName,
+      dueDate: new Date(dueDate).toLocaleDateString("en-GB"),
+    };
+
+    dispatch(addItem(newTodo));
+
+    // Clear input fields
+    if (nameRef.current) nameRef.current.value = "";
+    if (dateRef.current) dateRef.current.value = "";
   };
 
   return (
     <div className={`container text-center ${style.addToDoContainer}`}>
-      <form onSubmit={handleNewItem}>
+      <form onSubmit={handleAddItem}>
         <div className={`row g-3 ${style.rowContainer}`}>
           <div className="col-4">
             <input
               type="text"
               placeholder="Enter your todo here"
               className={style.todoInputText}
-              ref={textRef}
+              ref={nameRef}
             />
           </div>
           <div className="col-4">
             <input type="date" className={style.todoInputDate} ref={dateRef} />
           </div>
-          <div className="col-2 ">
+          <div className="col-2 co-auto">
             <button type="submit" className={style.todoAddButton}>
               Add
             </button>

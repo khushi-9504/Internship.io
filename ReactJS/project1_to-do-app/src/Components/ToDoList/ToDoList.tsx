@@ -1,37 +1,23 @@
-import { useContext } from "react"
-import ToDoItem from "../ToDoItem/ToDoItem"
-import style from "./ToDoList.module.css"
-import { TodoItemsContext } from "../../Store/ToDoContext"
+import { useSelector } from "react-redux";
+import ToDoItem from "../ToDoItem/ToDoItem";
+import style from "./ToDoList.module.css";
+import type { RootState } from "../../Store/reduxStore";
 
 const ToDoList = () => {
-  // const todoItems = [{
-  //   id: 1,
-  //   text: "Buy milk",
-  //   date: "01-07-2025",
-  //   completed: false
-  // },
-  // {
-  //   id: 2,
-  //   text: "Complete the project",
-  //   date: "01-07-2025",
-  //   completed: false
-  // },
-  // {
-  //   id: 3,
-  //   text:"Bootstrap is a free and open-source CSS framework directed at responsive, mobile-first front-end web development.",
-  //   date: "01-07-2025",
-    
-  // }]
-
-  const {todoItems}= useContext(TodoItemsContext);
+  const todoItems = useSelector((state: RootState) => state.todos.todoItems);
 
   return (
     <div className={`container text-center ${style.todoItemsContainer}`}>
-      {todoItems.map((item, index)=> (
-        <ToDoItem key={index} text={item.todoName} date={item.dueDate}/>
+      {todoItems.map((item) => (
+        <ToDoItem
+          key={item.id}
+          id={item.id}
+          text={item.todoName}
+          date={item.dueDate}
+        />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default ToDoList
+export default ToDoList;
