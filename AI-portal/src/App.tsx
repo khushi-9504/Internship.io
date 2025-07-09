@@ -1,15 +1,8 @@
-import { Box } from "@mui/material";
-import Sidebar from "./layout/Sidebar/Sidebar";
-import RightLayout from "./layout/RightLayout/RightLayout";
+import { RouterProvider } from "react-router-dom";
+import router from "./route/route";
 
 const App = () => {
-  return (
-    <Box sx={{ display: "flex", overflowY: "auto", minHeight: "100vh" }}>
-      {/* <MenuAppBar></MenuAppBar> */}
-      <Sidebar />
-      <RightLayout />
-    </Box>
-  );
+  return <RouterProvider router={router}></RouterProvider>;
 };
 
 export default App;

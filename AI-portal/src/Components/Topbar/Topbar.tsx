@@ -1,6 +1,6 @@
 import { Avatar, IconButton, Box } from "@mui/material";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import { UserImage } from "../../../assets";
+import { UserImage } from "../../assets/index";
 
 const TopBar = () => {
   return (

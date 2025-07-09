@@ -4,7 +4,10 @@ import EditIcon from "@mui/icons-material/Edit";
 
 const Profile = () => {
   return (
-    <Box padding={"2.5rem"}>
+    <Box
+      padding={"2.5rem"}
+      sx={{ backgroundColor: "#e0e0e0", borderTopLeftRadius: "35px" }}
+    >
       <Typography typography={"h6"} fontWeight={"bold"}>
         Account Setting
       </Typography>
@@ -14,7 +17,6 @@ const Profile = () => {
           backgroundColor: "white",
           borderRadius: "30px",
           width: "100%",
-          height: "100vh",
           padding: "2rem",
           marginTop: "2rem",
         }}
@@ -58,6 +60,78 @@ const Profile = () => {
           >
             Edit
           </Button>
+        </Paper>
+
+        <Paper
+          sx={{ p: 3, mt: 3, border: "2px solid #ddd", borderRadius: 3 }}
+          elevation={0}
+        >
+          <Typography variant="h6" gutterBottom>
+            Personal Information
+          </Typography>
+
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
+              gap: 2,
+            }}
+          >
+            <Box>
+              <Typography variant="subtitle2">First Name</Typography>
+              <Typography typography="subtitle1">Vishal</Typography>
+            </Box>
+            <Box>
+              <Typography variant="subtitle2">Last Name</Typography>
+              <Typography>Singh</Typography>
+            </Box>
+            <Box>
+              <Typography variant="subtitle2">Email Address</Typography>
+              <Typography>vishal.singh@aithinkers.com</Typography>
+            </Box>
+            <Box>
+              <Typography variant="subtitle2">Phone</Typography>
+              <Typography>9030973722</Typography>
+            </Box>
+            <Box>
+              <Typography variant="subtitle2">Bio</Typography>
+              <Typography>UX/UI Developer</Typography>
+            </Box>
+            <Box>
+              <Typography variant="subtitle2">Date of Joining</Typography>
+              <Typography>01/05/2018</Typography>
+            </Box>
+          </Box>
+        </Paper>
+
+        <Paper
+          sx={{ p: 3, mt: 3, border: "2px solid #ddd", borderRadius: 3 }}
+          elevation={0}
+        >
+          <Typography variant="h6" gutterBottom>
+            Address
+          </Typography>
+
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
+              gap: 2,
+            }}
+          >
+            <Box>
+              <Typography variant="subtitle2">Country</Typography>
+              <Typography typography="subtitle1">India</Typography>
+            </Box>
+            <Box>
+              <Typography variant="subtitle2">State</Typography>
+              <Typography>Hyderabad, Telangana</Typography>
+            </Box>
+            <Box>
+              <Typography variant="subtitle2">Postal Code </Typography>
+              <Typography>500030</Typography>
+            </Box>
+          </Box>
         </Paper>
       </Box>
     </Box>
