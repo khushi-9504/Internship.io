@@ -113,7 +113,7 @@ const Sidebar = () => {
                     "&:hover": { backgroundColor: "transparent" },
                   }}
                 >
-                  {isMobile ? <>{icon}</> : label}
+                  {!isMobile && label}
                 </Button>
               </Tooltip>
             </MenuItem>
@@ -128,14 +128,14 @@ const Sidebar = () => {
             sx={{
               minWidth: isMobile ? "auto" : "10rem",
               borderRadius: "15px",
-              px: isMobile ? 1.5 : 4,
+              px: isMobile ? 1 : 4,
               py: 1,
               textTransform: "capitalize",
               fontSize: isMobile ? "1.2rem" : "1rem",
               display: "flex",
               justifyContent: "center",
               alignItems: "flex-start",
-              ml: "2rem",
+              ml: isMobile ? "1rem" : "2rem",
             }}
           >
             {isMobile ? <LogoutIcon /> : "Log out"}
