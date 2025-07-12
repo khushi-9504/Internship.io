@@ -1,8 +1,13 @@
 import { Box, Paper, Avatar, Button, Typography } from "@mui/material";
 import { UserImage } from "../../assets";
 import EditIcon from "@mui/icons-material/Edit";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../redux/store";
 
 const Profile = () => {
+  const user = useSelector((state: RootState) => state.auth.signUpData);
+
+  if (!user) return null;
   return (
     <Box
       padding={"2.5rem"}
@@ -44,9 +49,11 @@ const Profile = () => {
               sx={{ width: 64, height: 64 }}
             />
             <Box>
-              <Typography fontWeight="bold">Vishal Singh</Typography>
+              <Typography fontWeight="bold">
+                {user.firstName} {user.lastName}
+              </Typography>
               <Typography color="text.secondary" fontSize="0.9rem">
-                UX/UI Developer
+                {user.role}
               </Typography>
             </Box>
           </Box>
@@ -79,23 +86,23 @@ const Profile = () => {
           >
             <Box>
               <Typography variant="subtitle2">First Name</Typography>
-              <Typography typography="subtitle1">Vishal</Typography>
+              <Typography typography="subtitle1">{user.firstName}</Typography>
             </Box>
             <Box>
               <Typography variant="subtitle2">Last Name</Typography>
-              <Typography>Singh</Typography>
+              <Typography>{user.lastName}</Typography>
             </Box>
             <Box>
               <Typography variant="subtitle2">Email Address</Typography>
-              <Typography>vishal.singh@aithinkers.com</Typography>
+              <Typography>{user.email}</Typography>
             </Box>
             <Box>
               <Typography variant="subtitle2">Phone</Typography>
-              <Typography>9030973722</Typography>
+              <Typography>{user.phone}</Typography>
             </Box>
             <Box>
               <Typography variant="subtitle2">Bio</Typography>
-              <Typography>UX/UI Developer</Typography>
+              <Typography>{user.role}</Typography>
             </Box>
             <Box>
               <Typography variant="subtitle2">Date of Joining</Typography>
@@ -121,15 +128,15 @@ const Profile = () => {
           >
             <Box>
               <Typography variant="subtitle2">Country</Typography>
-              <Typography typography="subtitle1">India</Typography>
+              <Typography typography="subtitle1">{user.country}</Typography>
             </Box>
             <Box>
               <Typography variant="subtitle2">State</Typography>
-              <Typography>Hyderabad, Telangana</Typography>
+              <Typography>{user.state}</Typography>
             </Box>
             <Box>
               <Typography variant="subtitle2">Postal Code </Typography>
-              <Typography>500030</Typography>
+              <Typography>{user.postalCode}</Typography>
             </Box>
           </Box>
         </Paper>
