@@ -11,34 +11,18 @@ import {
   Typography,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-
-const Employees = [
-  {
-    employeeName: "Vishal Singh",
-    employeeJobTitle: "UI/UX Designer",
-    employeeManager: "Arvind Kumar",
-  },
-
-  {
-    employeeName: "Abhishek Shil",
-    employeeJobTitle: "Software Engineer",
-    employeeManager: "Sushil Pandey",
-  },
-
-  {
-    employeeName: "Abrish Kumar",
-    employeeJobTitle: "Software Engineer",
-    employeeManager: "Vivek Kumar",
-  },
-
-  {
-    employeeName: "Srinivas Kumar",
-    employeeJobTitle: "Frontend Developer",
-    employeeManager: "Vikram Thakur",
-  },
-];
+import { useSelector } from "react-redux";
+import { useState } from "react";
+import type { RootState } from "../../redux/store";
 
 const EmployeeList = () => {
+  const employees = useSelector((state: RootState) => state.employee.list);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredEmployees = employees.filter((emp) =>
+    emp.employeeName.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <Box
       padding={"2.5rem"}
@@ -83,6 +67,8 @@ const EmployeeList = () => {
             <InputBase
               placeholder="Enter Employee Name"
               sx={{ flex: 1 }}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
               inputProps={{ "aria-label": "search employees" }}
             />
           </Paper>
@@ -99,11 +85,7 @@ const EmployeeList = () => {
         >
           <Table>
             <TableHead>
-              <TableRow
-                sx={{
-                  backgroundColor: "#e0e0e0",
-                }}
-              >
+              <TableRow sx={{ backgroundColor: "#e0e0e0" }}>
                 <TableCell sx={{ fontWeight: "bold" }}>Name</TableCell>
                 <TableCell sx={{ fontWeight: "bold" }}>Job Title</TableCell>
                 <TableCell sx={{ fontWeight: "bold" }}>
@@ -113,8 +95,8 @@ const EmployeeList = () => {
             </TableHead>
 
             <TableBody>
-              {Employees.map((emp) => (
-                <TableRow>
+              {filteredEmployees.map((emp, index) => (
+                <TableRow key={index}>
                   <TableCell>{emp.employeeName}</TableCell>
                   <TableCell>{emp.employeeJobTitle}</TableCell>
                   <TableCell>{emp.employeeManager}</TableCell>

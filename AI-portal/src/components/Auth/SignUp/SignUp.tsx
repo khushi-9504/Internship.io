@@ -2,14 +2,9 @@ import React, { useState } from "react";
 import {
   TextField,
   Button,
-  Select,
-  MenuItem,
   Radio,
   RadioGroup,
   FormControlLabel,
-  FormLabel,
-  FormControl,
-  InputLabel,
   Snackbar,
   Alert,
   Link,
@@ -19,10 +14,10 @@ import { useForm, Controller } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import type { AppDispatch } from "../../../redux/store";
 import { setSignUpData } from "../../../redux/features/authSlice";
-import { ROLES, COUNTRIES, STATES } from "../../../common/constants";
 import type { SignUpFormData } from "../../../types/Auth/authTypes";
 import { FormContainer, StyledForm } from "./SignUpStyles";
 import WrappedTypography from "../../Wrappers/WrappedTypography";
+import { addEmployee } from "../../../redux/features/employeeSlice";
 
 const SignUp: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -46,8 +41,17 @@ const SignUp: React.FC = () => {
   const password = watch("password");
 
   const onSubmit = (data: SignUpFormData) => {
-    dispatch(setSignUpData(data));
-    setOpenToast(true); // show toast
+    dispatch(setSignUpData(data)); // full form data
+
+    dispatch(
+      addEmployee({
+        employeeName: `${data.firstName} ${data.lastName}`,
+        employeeJobTitle: data.role,
+        employeeManager: data.manager,
+      })
+    );
+
+    setOpenToast(true);
   };
 
   return (
@@ -169,88 +173,90 @@ const SignUp: React.FC = () => {
         />
 
         {/* Gender */}
-        <FormControl>
-          <FormLabel>Gender</FormLabel>
-          <Controller
-            name="gender"
-            control={control}
-            rules={{ required: "Gender is required" }}
-            render={({ field }) => (
-              <RadioGroup row {...field}>
-                <FormControlLabel
-                  value="female"
-                  control={<Radio />}
-                  label="Female"
-                />
-                <FormControlLabel
-                  value="male"
-                  control={<Radio />}
-                  label="Male"
-                />
-                <FormControlLabel
-                  value="other"
-                  control={<Radio />}
-                  label="Other"
-                />
-              </RadioGroup>
-            )}
-          />
-        </FormControl>
+
+        <Controller
+          name="gender"
+          control={control}
+          rules={{ required: "Gender is required" }}
+          render={({ field }) => (
+            <RadioGroup row {...field}>
+              <FormControlLabel
+                value="female"
+                control={<Radio />}
+                label="Female"
+              />
+              <FormControlLabel value="male" control={<Radio />} label="Male" />
+            </RadioGroup>
+          )}
+        />
+
+        {/* Manager */}
+
+        <Controller
+          name="manager"
+          control={control}
+          rules={{ required: "Reporting Manager is required" }}
+          render={({ field }) => (
+            <TextField
+              {...field}
+              label="Reporting Manager"
+              fullWidth
+              error={!!errors.manager}
+              helperText={errors.manager?.message}
+            />
+          )}
+        />
 
         {/* Role */}
-        <FormControl fullWidth required>
-          <InputLabel>Role</InputLabel>
-          <Controller
-            name="role"
-            control={control}
-            rules={{ required: "Role is required" }}
-            render={({ field }) => (
-              <Select {...field}>
-                {ROLES.map((role) => (
-                  <MenuItem key={role} value={role}>
-                    {role}
-                  </MenuItem>
-                ))}
-              </Select>
-            )}
-          />
-        </FormControl>
+
+        <Controller
+          name="role"
+          control={control}
+          rules={{ required: "Role is required" }}
+          render={({ field }) => (
+            <TextField
+              {...field}
+              label="Role"
+              fullWidth
+              error={!!errors.role}
+              helperText={errors.role?.message}
+            />
+          )}
+        />
 
         {/* State */}
-        <FormControl fullWidth>
-          <InputLabel>State</InputLabel>
-          <Controller
-            name="state"
-            control={control}
-            render={({ field }) => (
-              <Select {...field}>
-                {STATES.map((state) => (
-                  <MenuItem key={state} value={state}>
-                    {state}
-                  </MenuItem>
-                ))}
-              </Select>
-            )}
-          />
-        </FormControl>
+
+        <Controller
+          name="state"
+          control={control}
+          rules={{ required: "State is required" }}
+          render={({ field }) => (
+            <TextField
+              {...field}
+              label="State"
+              fullWidth
+              error={!!errors.state}
+              helperText={errors.state?.message}
+            />
+          )}
+        />
 
         {/* Country */}
-        <FormControl fullWidth>
-          <InputLabel>Country</InputLabel>
-          <Controller
-            name="country"
-            control={control}
-            render={({ field }) => (
-              <Select {...field}>
-                {COUNTRIES.map((country) => (
-                  <MenuItem key={country} value={country}>
-                    {country}
-                  </MenuItem>
-                ))}
-              </Select>
-            )}
-          />
-        </FormControl>
+
+        <Controller
+          name="country"
+          control={control}
+          rules={{ required: "Country is required" }}
+          render={({ field }) => (
+            <TextField
+              {...field}
+              label="Country"
+              fullWidth
+              error={!!errors.country}
+              helperText={errors.country?.message}
+            />
+          )}
+        />
 
         {/* Postal Code */}
         <Controller

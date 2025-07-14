@@ -4,12 +4,13 @@ export interface SignUpFormData {
   email: string;
   phone: string;
   gender: string;
+  manager: string;
   role: string;
   state: string;
   country: string;
   postalCode: string;
   password: string;
-  confirmPassword: string;
+  joiningDate: string;
 }
 
 export interface LoginFormData {

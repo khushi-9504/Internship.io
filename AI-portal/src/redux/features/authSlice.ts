@@ -25,8 +25,20 @@ const authSlice = createSlice({
     logoutUser: (state) => {
       state.isLoggedIn = false;
     },
+    updateUserProfile: (
+      state,
+      action: PayloadAction<Partial<SignUpFormData>>
+    ) => {
+      if (state.signUpData) {
+        state.signUpData = {
+          ...state.signUpData,
+          ...action.payload,
+        };
+      }
+    },
   },
 });
 
-export const { setSignUpData, loginUser, logoutUser } = authSlice.actions;
+export const { setSignUpData, loginUser, logoutUser, updateUserProfile } =
+  authSlice.actions;
 export default authSlice.reducer;

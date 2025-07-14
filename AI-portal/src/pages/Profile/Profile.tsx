@@ -3,9 +3,11 @@ import { UserImage } from "../../assets";
 import EditIcon from "@mui/icons-material/Edit";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../redux/store";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const user = useSelector((state: RootState) => state.auth.signUpData);
+  const navigate = useNavigate();
 
   if (!user) return null;
   return (
@@ -64,6 +66,7 @@ const Profile = () => {
             size="small"
             endIcon={<EditIcon />}
             sx={{ borderRadius: "20px", textTransform: "capitalize" }}
+            onClick={() => navigate("/edit-profile")}
           >
             Edit
           </Button>
@@ -106,7 +109,7 @@ const Profile = () => {
             </Box>
             <Box>
               <Typography variant="subtitle2">Date of Joining</Typography>
-              <Typography>01/05/2018</Typography>
+              <Typography>{user.joiningDate}</Typography>
             </Box>
           </Box>
         </Paper>

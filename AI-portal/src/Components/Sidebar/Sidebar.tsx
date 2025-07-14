@@ -8,6 +8,15 @@ import {
   useTheme,
 } from "@mui/material";
 import { Logo } from "../../assets";
+import {
+  sidebarContainer,
+  logoBox,
+  menuList,
+  menuItem,
+  menuButton,
+  logoutContainer,
+  logoutButton,
+} from "./SidebarStyle";
 import HomeIcon from "@mui/icons-material/Home";
 import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
 import FlightTakeoffRoundedIcon from "@mui/icons-material/FlightTakeoffRounded";
@@ -16,43 +25,39 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import StickyNote2Icon from "@mui/icons-material/StickyNote2";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { useNavigate } from "react-router-dom";
+import { logoutUser } from "../../redux/features/authSlice";
+import { useDispatch } from "react-redux";
 
 const Sidebar = () => {
   const theme = useTheme();
   const isMedium = useMediaQuery("(max-width:1020px)");
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const menuItems = [
-    { label: "Dashboard", icon: <HomeIcon /> },
-    { label: "Profile", icon: <PersonRoundedIcon /> },
-    { label: "Leaves", icon: <FlightTakeoffRoundedIcon /> },
-    { label: "Holidays", icon: <CalendarMonthRoundedIcon /> },
-    { label: "Employees", icon: <GroupsIcon /> },
-    { label: "Policies", icon: <StickyNote2Icon /> },
-    { label: "AI Ideas", icon: <LightbulbIcon /> },
+    { label: "Dashboard", icon: <HomeIcon />, path: "/" },
+    { label: "Profile", icon: <PersonRoundedIcon />, path: "/profile" },
+    { label: "Leaves", icon: <FlightTakeoffRoundedIcon />, path: "/leaves" },
+    {
+      label: "Holidays",
+      icon: <CalendarMonthRoundedIcon />,
+      path: "/holidays",
+    },
+    { label: "Employees", icon: <GroupsIcon />, path: "/employees" },
+    { label: "Policies", icon: <StickyNote2Icon />, path: "/policies" },
+    { label: "AI Ideas", icon: <LightbulbIcon />, path: "/ai-ideas" },
   ];
 
   return (
     <Box
       width={isMobile ? "4rem" : isMedium ? "10rem" : "17%"}
       minWidth={isMobile ? "4rem" : isMedium ? "10rem" : "17%"}
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100vh",
-        justifyContent: "flex-start",
-        backgroundColor: "#fff",
-        borderRight: "1px solid #eee",
-      }}
+      sx={sidebarContainer}
     >
       {/* Top: Logo */}
-      <Box
-        sx={{
-          p: 2,
-          display: "flex",
-          justifyContent: isMobile ? "center" : "flex-start",
-        }}
-      >
+      <Box sx={logoBox(isMobile)}>
         <img
           src={Logo}
           alt="Logo"
@@ -74,45 +79,15 @@ const Sidebar = () => {
         }}
       >
         {/* Menu List */}
-        <MenuList
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 1,
-            px: isMobile ? 0 : isMedium ? 1 : 2,
-          }}
-        >
-          {menuItems.map(({ label, icon }) => (
+        <MenuList sx={menuList(isMobile, isMedium)}>
+          {menuItems.map(({ label, icon, path }) => (
             <MenuItem
               key={label}
-              sx={{
-                display: "flex",
-                justifyContent: isMobile ? "center" : "flex-start",
-                px: isMobile ? 0 : 1,
-              }}
+              onClick={() => navigate(path)}
+              sx={menuItem(isMobile)}
             >
               <Tooltip title={isMobile ? label : ""} placement="right">
-                <Button
-                  startIcon={icon}
-                  sx={{
-                    minWidth: "100%",
-                    justifyContent: isMobile ? "center" : "flex-start",
-                    textTransform: "capitalize",
-                    color: "#333",
-                    fontSize: isMobile
-                      ? "0.75rem"
-                      : isMedium
-                      ? "0.85rem"
-                      : "1rem",
-                    padding: isMobile
-                      ? "6px 8px"
-                      : isMedium
-                      ? "6px 8px"
-                      : "8px 16px",
-                    whiteSpace: "normal",
-                    "&:hover": { backgroundColor: "transparent" },
-                  }}
-                >
+                <Button startIcon={icon} sx={menuButton(isMobile, isMedium)}>
                   {!isMobile && label}
                 </Button>
               </Tooltip>
@@ -121,21 +96,14 @@ const Sidebar = () => {
         </MenuList>
 
         {/* Logout Button */}
-        <Box sx={{ mb: "2.5rem", textAlign: "center" }}>
+        <Box sx={logoutContainer}>
           <Button
             variant="contained"
             startIcon={!isMobile && <LogoutIcon />}
-            sx={{
-              minWidth: isMobile ? "auto" : "10rem",
-              borderRadius: "15px",
-              px: isMobile ? 1 : 4,
-              py: 1,
-              textTransform: "capitalize",
-              fontSize: isMobile ? "1.2rem" : "1rem",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "flex-start",
-              ml: isMobile ? "1rem" : "2rem",
+            sx={logoutButton(isMobile)}
+            onClick={() => {
+              dispatch(logoutUser());
+              navigate("/login");
             }}
           >
             {isMobile ? <LogoutIcon /> : "Log out"}

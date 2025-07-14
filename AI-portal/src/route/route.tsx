@@ -3,6 +3,7 @@ import MainLayout from "../layout/MainLayout";
 import { EmployeeList, Profile } from "../pages";
 import SignUp from "../components/Auth/SignUp/SignUp";
 import Login from "../components/Auth/Login/Login";
+import EditProfile from "../pages/Profile/EditProfile";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,7 @@ const router = createBrowserRouter([
       { path: "employees", element: <EmployeeList /> },
       { path: "signup", element: <SignUp /> },
       { path: "login", element: <Login /> },
+      { path: "edit-profile", element: <EditProfile /> },
     ],
   },
 ]);
