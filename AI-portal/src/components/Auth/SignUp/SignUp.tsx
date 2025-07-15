@@ -14,10 +14,35 @@ import { useForm, Controller } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import type { AppDispatch } from "../../../redux/store";
 import { setSignUpData } from "../../../redux/features/authSlice";
-import type { SignUpFormData } from "../../../types/Auth/authTypes";
+import { addEmployee } from "../../../redux/features/employeeSlice";
+import type {
+  SignUpFormData,
+  SignUpDataToStore,
+} from "../../../types/Auth/authTypes";
 import { FormContainer, StyledForm } from "./SignUpStyles";
 import WrappedTypography from "../../Wrappers/WrappedTypography";
-import { addEmployee } from "../../../redux/features/employeeSlice";
+import { Link as RouterLink } from "react-router-dom";
+
+// Then use this inside your return:
+<Link component={RouterLink} to="/login" underline="hover">
+  Already have an account? Login
+</Link>;
+
+// Cloudinary upload helper
+const uploadImageToCloudinary = async (file: File): Promise<string> => {
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("upload_preset", "ai-portal");
+  const response = await fetch(
+    "https://api.cloudinary.com/v1_1/dzoi2kcv8/image/upload",
+    {
+      method: "POST",
+      body: formData,
+    }
+  );
+  const data = await response.json();
+  return data.secure_url;
+};
 
 const SignUp: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -40,18 +65,29 @@ const SignUp: React.FC = () => {
 
   const password = watch("password");
 
-  const onSubmit = (data: SignUpFormData) => {
-    dispatch(setSignUpData(data)); // full form data
+  const onSubmit = async (data: SignUpFormData) => {
+    try {
+      const profileImageFile = data.profilePic[0];
+      const imageUrl = await uploadImageToCloudinary(profileImageFile);
 
-    dispatch(
-      addEmployee({
-        employeeName: `${data.firstName} ${data.lastName}`,
-        employeeJobTitle: data.role,
-        employeeManager: data.manager,
-      })
-    );
+      const fullDataWithImage: SignUpDataToStore = {
+        ...data,
+        profilePic: imageUrl,
+      };
 
-    setOpenToast(true);
+      dispatch(setSignUpData(fullDataWithImage));
+
+      dispatch(
+        addEmployee({
+          employeeName: `${data.firstName} ${data.lastName}`,
+          employeeJobTitle: data.role,
+          employeeManager: data.manager,
+        })
+      );
+      setOpenToast(true);
+    } catch (error) {
+      console.error("Error uploading image", error);
+    }
   };
 
   return (
@@ -173,7 +209,6 @@ const SignUp: React.FC = () => {
         />
 
         {/* Gender */}
-
         <Controller
           name="gender"
           control={control}
@@ -190,8 +225,7 @@ const SignUp: React.FC = () => {
           )}
         />
 
-        {/* Manager */}
-
+        {/* Reporting Manager */}
         <Controller
           name="manager"
           control={control}
@@ -208,7 +242,6 @@ const SignUp: React.FC = () => {
         />
 
         {/* Role */}
-
         <Controller
           name="role"
           control={control}
@@ -224,8 +257,25 @@ const SignUp: React.FC = () => {
           )}
         />
 
-        {/* State */}
+        {/* Joining Date */}
+        <Controller
+          name="joiningDate"
+          control={control}
+          rules={{ required: "Joining Date is required" }}
+          render={({ field }) => (
+            <TextField
+              {...field}
+              label="Joining Date"
+              type="date"
+              fullWidth
+              InputLabelProps={{ shrink: true }}
+              error={!!errors.joiningDate}
+              helperText={errors.joiningDate?.message}
+            />
+          )}
+        />
 
+        {/* State */}
         <Controller
           name="state"
           control={control}
@@ -242,7 +292,6 @@ const SignUp: React.FC = () => {
         />
 
         {/* Country */}
-
         <Controller
           name="country"
           control={control}
@@ -267,6 +316,29 @@ const SignUp: React.FC = () => {
           )}
         />
 
+        {/* Profile Picture */}
+        <Controller
+          name="profilePic"
+          control={control}
+          rules={{ required: "Profile Picture is required" }}
+          render={({ field }) => (
+            <TextField
+              type="file"
+              fullWidth
+              inputProps={{ accept: "image/*" }}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                if (e.target.files) {
+                  field.onChange(e.target.files);
+                }
+              }}
+              error={!!errors.profilePic}
+              helperText={
+                errors.profilePic ? "Profile picture is required" : ""
+              }
+            />
+          )}
+        />
+
         {/* Submit Button */}
         <Button type="submit" variant="contained" fullWidth>
           Sign Up
@@ -274,13 +346,13 @@ const SignUp: React.FC = () => {
 
         {/* Login Link */}
         <Box mt={2} textAlign="center">
-          <Link href="/login" underline="hover">
+          <Link component={RouterLink} to="/login" underline="hover">
             Already have an account? Login
           </Link>
         </Box>
       </StyledForm>
 
-      {/* MUI Snackbar Toast */}
+      {/* Snackbar Toast */}
       <Snackbar
         open={openToast}
         autoHideDuration={3000}

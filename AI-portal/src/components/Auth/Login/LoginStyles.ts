@@ -1,4 +1,3 @@
-// src/components/Auth/LoginStyles.ts
 import { styled } from "@mui/material/styles";
 import { Box } from "@mui/material";
 

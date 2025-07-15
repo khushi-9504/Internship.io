@@ -53,10 +53,7 @@ const Login: React.FC = () => {
         message: "Login successful!",
         severity: "success",
       });
-      console.log("Entered Email:", data.email);
-      console.log("Redux Email:", signUpData?.email);
-      console.log("Entered Password:", data.password);
-      console.log("Redux Password:", signUpData?.password);
+
       setTimeout(() => navigate("/profile"), 1500);
     } else {
       setToast({

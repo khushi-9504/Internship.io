@@ -1,5 +1,4 @@
 import { Box, Paper, Avatar, Button, Typography } from "@mui/material";
-import { UserImage } from "../../assets";
 import EditIcon from "@mui/icons-material/Edit";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../redux/store";
@@ -47,7 +46,7 @@ const Profile = () => {
           <Box display="flex" alignItems="center" gap={2}>
             <Avatar
               alt="Vishal Singh"
-              src={UserImage}
+              src={user.profilePic}
               sx={{ width: 64, height: 64 }}
             />
             <Box>

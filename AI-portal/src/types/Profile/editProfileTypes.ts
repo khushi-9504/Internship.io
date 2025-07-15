@@ -6,7 +6,8 @@ export interface editProfileFormData {
   role: string;
   country: string;
   state: string;
-  postalCode: string;
+  postalCode?: string;
   manager: string;
   joiningDate: string;
+  profilePic?: FileList | string;
 }

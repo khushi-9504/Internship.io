@@ -25,12 +25,43 @@ const EditProfile: React.FC = () => {
       postalCode: user?.postalCode || "",
       manager: user?.manager || "",
       joiningDate: user?.joiningDate || "",
+      profilePic: user?.profilePic || "",
     },
   });
 
-  const onSubmit = (data: editProfileFormData) => {
-    dispatch(updateUserProfile(data));
-    navigate("/profile");
+  const onSubmit = async (data: editProfileFormData) => {
+    try {
+      let imageUrl = user?.profilePic || "";
+
+      if (data.profilePic instanceof FileList && data.profilePic.length > 0) {
+        const formData = new FormData();
+        formData.append("file", data.profilePic[0]);
+        formData.append("upload_preset", "ai-portal");
+        formData.append("folder", "user_profiles");
+
+        const res = await fetch(
+          `https://api.cloudinary.com/v1_1/dzoi2kcv8/image/upload`,
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+
+        const cloudinaryData = await res.json();
+        imageUrl = cloudinaryData.secure_url;
+      }
+
+      dispatch(
+        updateUserProfile({
+          ...data,
+          profilePic: imageUrl,
+        })
+      );
+
+      navigate("/profile");
+    } catch (error) {
+      console.error("Image upload failed:", error);
+    }
   };
 
   const fields: {
@@ -70,11 +101,31 @@ const EditProfile: React.FC = () => {
                   fullWidth
                   type={type || "text"}
                   sx={{ mb: 2 }}
-                  InputLabelProps={type === "date" ? { shrink: true } : {}}
+                  InputLabelProps={
+                    type === "date" ? { shrink: true } : undefined
+                  }
                 />
               )}
             />
           ))}
+
+          {/* Profile Picture Upload */}
+          <Controller
+            name="profilePic"
+            control={control}
+            render={({ field }) => (
+              <TextField
+                type="file"
+                inputProps={{ accept: "image/*" }}
+                onChange={(e) => {
+                  const fileInput = e.target as HTMLInputElement;
+                  field.onChange(fileInput.files);
+                }}
+                fullWidth
+                sx={{ mb: 2 }}
+              />
+            )}
+          />
         </Box>
 
         <Button variant="contained" type="submit" sx={formButton}>

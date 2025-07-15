@@ -1,8 +1,11 @@
 import { Avatar, IconButton, Box } from "@mui/material";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import { UserImage } from "../../assets/index";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../redux/store";
 
 const TopBar = () => {
+  const user = useSelector((state: RootState) => state.auth.signUpData);
+
   return (
     <Box
       display="flex"
@@ -20,7 +23,7 @@ const TopBar = () => {
 
       <Avatar
         alt="User Profile"
-        src={UserImage}
+        src={user?.profilePic}
         sx={{ width: 40, height: 40 }}
       />
     </Box>
