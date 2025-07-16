@@ -1,19 +1,25 @@
 import {
-  Box,
-  InputBase,
-  Paper,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
+  InputBase,
   Typography,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useSelector } from "react-redux";
-import { useState } from "react";
 import type { RootState } from "../../redux/store";
+
+import {
+  PageContainer,
+  InnerBox,
+  HeaderSection,
+  SearchWrapper,
+  StyledPaper,
+} from "./EmployeeListStyles";
+import { useState } from "react";
 
 const EmployeeList = () => {
   const employees = useSelector((state: RootState) => state.employee.list);
@@ -24,65 +30,32 @@ const EmployeeList = () => {
   );
 
   return (
-    <Box
-      padding={"2.5rem"}
-      sx={{ backgroundColor: "#e0e0e0", borderTopLeftRadius: "35px" }}
-    >
-      <Typography typography={"h5"} fontWeight={"bold"}>
+    <PageContainer>
+      <Typography variant="h5" fontWeight="bold">
         Employees
       </Typography>
 
-      <Box
-        sx={{
-          backgroundColor: "white",
-          borderRadius: "30px",
-          width: "100%",
-          padding: "2rem",
-          marginTop: "2rem",
-        }}
-      >
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-          mb={3}
-        >
+      <InnerBox>
+        <HeaderSection>
           <Typography variant="h6" fontWeight="bold">
             All Active Employees
           </Typography>
 
-          <Paper
-            component="form"
-            sx={{
-              p: "4px 12px",
-              display: "flex",
-              alignItems: "center",
-              width: 300,
-              borderRadius: "50px",
-              border: "1px solid #ccc",
-              boxShadow: "none",
-            }}
-          >
-            <SearchIcon sx={{ color: "#999", mr: 1 }} />
-            <InputBase
-              placeholder="Enter Employee Name"
-              sx={{ flex: 1 }}
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              inputProps={{ "aria-label": "search employees" }}
-            />
-          </Paper>
-        </Box>
+          <form style={{ width: 300 }}>
+            <SearchWrapper>
+              <SearchIcon sx={{ color: "#999", mr: 1 }} />
+              <InputBase
+                placeholder="Enter Employee Name"
+                sx={{ flex: 1 }}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                inputProps={{ "aria-label": "search employees" }}
+              />
+            </SearchWrapper>
+          </form>
+        </HeaderSection>
 
-        <TableContainer
-          component={Paper}
-          elevation={0}
-          sx={{
-            border: "2px solid #e0e0e0",
-            borderRadius: "15px",
-            padding: "2rem",
-          }}
-        >
+        <TableContainer component={StyledPaper} elevation={0}>
           <Table>
             <TableHead>
               <TableRow sx={{ backgroundColor: "#e0e0e0" }}>
@@ -93,7 +66,6 @@ const EmployeeList = () => {
                 </TableCell>
               </TableRow>
             </TableHead>
-
             <TableBody>
               {filteredEmployees.map((emp, index) => (
                 <TableRow key={index}>
@@ -105,8 +77,8 @@ const EmployeeList = () => {
             </TableBody>
           </Table>
         </TableContainer>
-      </Box>
-    </Box>
+      </InnerBox>
+    </PageContainer>
   );
 };
 

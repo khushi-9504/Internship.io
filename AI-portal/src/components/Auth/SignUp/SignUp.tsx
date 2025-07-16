@@ -21,12 +21,7 @@ import type {
 } from "../../../types/Auth/authTypes";
 import { FormContainer, StyledForm } from "./SignUpStyles";
 import WrappedTypography from "../../Wrappers/WrappedTypography";
-import { Link as RouterLink } from "react-router-dom";
-
-// Then use this inside your return:
-<Link component={RouterLink} to="/login" underline="hover">
-  Already have an account? Login
-</Link>;
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 
 // Cloudinary upload helper
 const uploadImageToCloudinary = async (file: File): Promise<string> => {
@@ -54,6 +49,7 @@ const SignUp: React.FC = () => {
   } = useForm<SignUpFormData & { confirmPassword: string }>();
 
   const [openToast, setOpenToast] = useState(false);
+  const navigate = useNavigate();
 
   const handleToastClose = (
     event?: React.SyntheticEvent | Event,
@@ -84,6 +80,7 @@ const SignUp: React.FC = () => {
           employeeManager: data.manager,
         })
       );
+      navigate("/login");
       setOpenToast(true);
     } catch (error) {
       console.error("Error uploading image", error);

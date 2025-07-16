@@ -5,7 +5,7 @@ import SignUp from "../components/Auth/SignUp/SignUp";
 import Login from "../components/Auth/Login/Login";
 import EditProfile from "../pages/Profile/EditProfile";
 import PrivateRoute from "./PrivateRouting/PrivateRoute";
-import ForgotPassword from "../pages/Employees/ForgotPassword/ForgotPassword";
+import ForgotPassword from "../pages/Employees/EmployeeList";
 
 const router = createBrowserRouter([
   // Public Routes
